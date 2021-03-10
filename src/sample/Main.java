@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import sample.views.Calculadora;
 
 public class Main extends Application {
 
@@ -49,6 +50,7 @@ public class Main extends Application {
         mnbarPrincipal.getMenus().addAll( menComp1, menComp2, menCerrar);
 
         miCalc = new MenuItem("Calculadora");
+        miCalc.setOnAction(event -> opcionesMenu(1));
         menComp1.getItems().add(miCalc);
 
         miSalir = new MenuItem("Salir");
@@ -104,6 +106,13 @@ public class Main extends Application {
         grid.add(btn4, 0, 1, 1, 1);
         grid.add(btn5, 1, 1, 1, 1);
 */
+    }
+
+    private void opcionesMenu(int opc) {
+        switch (opc){
+            case 1: new Calculadora();
+
+        }
     }
 
     public static void main(String[] args) {
