@@ -10,23 +10,22 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import sample.views.Calculadora;
+import sample.views.Rompecabezas;
 
 public class Main extends Application {
 
     private VBox vBox;
     private MenuBar mnbarPrincipal;
     private Menu menComp1, menComp2, menCerrar;
-    private MenuItem miCalc, miSalir;
+    private MenuItem miCalc, miRompecabeza, miSalir;
     private Scene escena;
-
 
     /*
     private HBox hBox;
 
     private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7;
     private FlowPane flowpane = new FlowPane();
-    */
-
+    */  //codigo de la tarea
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -51,7 +50,11 @@ public class Main extends Application {
 
         miCalc = new MenuItem("Calculadora");
         miCalc.setOnAction(event -> opcionesMenu(1));
-        menComp1.getItems().add(miCalc);
+
+        miRompecabeza = new MenuItem("Rompecabezas");//se agrega el item rompecabeza
+        miRompecabeza.setOnAction(event -> opcionesMenu(2));
+
+        menComp1.getItems().addAll(miCalc,miRompecabeza);//se agrega item calc y rompecabeza
 
         miSalir = new MenuItem("Salir");
         miSalir.setOnAction( event -> { System.exit(0);});
@@ -105,18 +108,17 @@ public class Main extends Application {
         flowpane.setPadding(new Insets(20));
         grid.add(btn4, 0, 1, 1, 1);
         grid.add(btn5, 1, 1, 1, 1);
-*/
+*/  //codigo de la tarea
     }
 
     private void opcionesMenu(int opc) {
         switch (opc){
-            case 1: new Calculadora();
-
+            case 1: new Calculadora(); break;
+            case 2: new Rompecabezas();
         }
     }
 
     public static void main(String[] args) {
-
         launch(args);
     }
 
