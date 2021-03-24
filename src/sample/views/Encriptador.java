@@ -48,7 +48,8 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
 
         hBox = new HBox();
         txtEncriptado = new TextArea();
-        txtEncriptado.addEventHandler(KeyEvent.KEY_TYPED, this);
+        txtEncriptado.setOnKeyPressed(this);
+        //txtEncriptado.addEventHandler(KeyEvent.KEY_TYPED, this);
 
         txtSalida = new TextArea();
         txtSalida.setEditable(false);
@@ -77,10 +78,10 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
         switch (event.getCode().toString()){
             case "A":
                // int codigo = event.getCode().ordinal();
-                txtEncriptado.appendText("bb");
+                txtSalida.appendText("bb");
                 break;
             case "B":
-                txtSalida.appendText("c");
+                txtSalida.appendText("cc");
                 break;
         }
     }
