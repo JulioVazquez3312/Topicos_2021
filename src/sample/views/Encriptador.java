@@ -12,6 +12,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+
 public class Encriptador extends Stage implements EventHandler<KeyEvent>{
 
     private Scene escena;
@@ -23,6 +27,8 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
     private Button btnEncriptar;
     private Button btnTolAbrir;
     private FileChooser fileChooser;
+    private File archivo;
+    private String texto = "";
 
     public Encriptador(){
 
@@ -54,7 +60,6 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
         txtSalida = new TextArea();
         txtSalida.setEditable(false);
 
-
         hBox.getChildren().addAll(txtEncriptado, txtSalida);
         btnEncriptar = new Button("Encriptar entrada");
         btnEncriptar.setOnAction(event -> abrirArchivo());
@@ -65,15 +70,73 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
     }
 
     private void abrirArchivo() {
+
         fileChooser = new FileChooser();
         fileChooser.setTitle("Buscar archivo a encriptar : ");
-        fileChooser.showOpenDialog(this);
+        archivo = fileChooser.showOpenDialog(this);
+        leerArchivo();
+
+    }
+
+    private void leerArchivo() {
+
+        if (archivo != null) {
+            FileReader fileReader = null;
+            BufferedReader bufferedReader = null;
+
+            try {
+                fileReader = new FileReader(archivo);
+                bufferedReader = new BufferedReader(fileReader);
+                String st = bufferedReader.readLine();
+                while (st != null) {
+                    texto = texto + st + "\n";
+                    st = bufferedReader.readLine();
+                }
+            } catch (Exception e) {
+                //txtEncriptado.appendText(e.toString());
+                System.out.println(e.toString());
+            } finally {
+                try {
+                    fileReader.close();
+                } catch (Exception e2) {
+                    //txtEncriptado.appendText(e2.toString());
+                    System.out.println(e2.toString());
+                }
+            }
+            txtEncriptado.appendText(texto);
+            encriptarArchivo(texto);
+        }
+    }
+    public void encriptarArchivo(String texto){
+        System.out.println(texto);
+
+        char[] caracteres = texto.toCharArray();
+
+        for (int i = 0; i < caracteres.length; i++) {
+
+            switch (caracteres[i]) {
+                case 'a':
+                    // int codigo = event.getCode().ordinal();
+                    txtSalida.appendText("bb");
+                    break;
+                case 'b':
+                    txtSalida.appendText("cc");
+                    break;
+                case 'c':
+                    txtSalida.appendText("aa");
+                    break;
+                case 'd':
+                    txtSalida.appendText("xx");
+                    break;
+
+            }
+        }
     }
 
     @Override
     public void handle(KeyEvent event) {
 
-        //txtSalida.appendText(event.getCode().ordinal()+"");
+        //txtSalida.appendText(event.getCode().ordinalg()+"");
 
         switch (event.getCode().toString()){
             case "A":
@@ -85,4 +148,4 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
                 break;
         }
     }
-}//class Encriptador
+}
