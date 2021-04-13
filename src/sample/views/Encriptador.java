@@ -55,10 +55,12 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
         hBox = new HBox();
         txtEncriptado = new TextArea();
         txtEncriptado.setOnKeyPressed(this);
+        txtEncriptado.setWrapText(true);
         //txtEncriptado.addEventHandler(KeyEvent.KEY_TYPED, this);
 
         txtSalida = new TextArea();
         txtSalida.setEditable(false);
+        txtSalida.setWrapText(true);
 
         hBox.getChildren().addAll(txtEncriptado, txtSalida);
         btnEncriptar = new Button("Encriptar entrada");
@@ -108,7 +110,10 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
         }
     }
     public void encriptarArchivo(String texto){
+        texto = texto.toUpperCase();
+
         System.out.println(texto);
+
 
         char[] caracteres = texto.toCharArray();
 
@@ -116,27 +121,86 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
 
             switch (caracteres[i]) {
                 case 'A':
-                case 'a':
-                    txtSalida.appendText("bb");
+                    // int codigo = event.getCode().ordinal();
+                    txtSalida.appendText("97");
                     break;
                 case 'B':
-                case 'b':
-                    txtSalida.appendText("cc");
+                    txtSalida.appendText("98");
                     break;
                 case 'C':
-                case 'c':
-                    txtSalida.appendText("aa");
+                    txtSalida.appendText("99");
                     break;
                 case 'D':
-                case 'd':
-                    txtSalida.appendText("xx");
+                    txtSalida.appendText("100");
+                    break;
+                case 'E':
+                    txtSalida.appendText("101");
+                    break;
+                case 'F':
+                    txtSalida.appendText("102");
+                    break;
+                case 'G':
+                    txtSalida.appendText("103");
+                    break;
+                case 'H':
+                    txtSalida.appendText("104");
+                    break;
+                case 'I':
+                    txtSalida.appendText("105");
+                    break;
+                case 'J':
+                    txtSalida.appendText("106");
+                    break;
+                case 'K':
+                    txtSalida.appendText("107");
+                    break;
+                case 'L':
+                    txtSalida.appendText("108");
                     break;
                 case 'M':
-                case 'm':
-                    txtSalida.appendText("ff");
+                    txtSalida.appendText("109");
                     break;
-                case ' ':
-                    txtSalida.appendText("\t");
+                case 'N':
+                    txtSalida.appendText("110");
+                    break;
+                case 'Ñ':
+                    txtSalida.appendText("164");
+                    break;
+                case 'O':
+                    txtSalida.appendText("111");
+                    break;
+                case 'P':
+                    txtSalida.appendText("112");
+                    break;
+                case 'Q':
+                    txtSalida.appendText("113");
+                    break;
+                case 'R':
+                    txtSalida.appendText("114");
+                    break;
+                case 'S':
+                    txtSalida.appendText("115");
+                    break;
+                case 'T':
+                    txtSalida.appendText("116");
+                    break;
+                case 'U':
+                    txtSalida.appendText("117");
+                    break;
+                case 'V':
+                    txtSalida.appendText("118");
+                    break;
+                case 'W':
+                    txtSalida.appendText("119");
+                    break;
+                case 'X':
+                    txtSalida.appendText("120");
+                    break;
+                case 'Y':
+                    txtSalida.appendText("121");
+                    break;
+                case 'Z':
+                    txtSalida.appendText("122");
                     break;
                 case '\n':
                     txtSalida.appendText("\n");
@@ -153,11 +217,88 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
         switch (event.getCode().toString()){
             case "A":
                // int codigo = event.getCode().ordinal();
-                txtSalida.appendText("bb");
+                txtSalida.appendText("97");
                 break;
             case "B":
-                txtSalida.appendText("cc");
+                txtSalida.appendText("98");
                 break;
+            case "C":
+                txtSalida.appendText("99");
+                break;
+            case "D":
+                txtSalida.appendText("100");
+                break;
+            case "E":
+                txtSalida.appendText("101");
+                break;
+            case "F":
+                txtSalida.appendText("102");
+                break;
+            case "G":
+                txtSalida.appendText("103");
+                break;
+            case "H":
+                txtSalida.appendText("104");
+                break;
+            case "I":
+                txtSalida.appendText("105");
+                break;
+            case "J":
+                txtSalida.appendText("106");
+                break;
+            case "K":
+                txtSalida.appendText("107");
+                break;
+            case "L":
+                txtSalida.appendText("108");
+                break;
+            case "M":
+                txtSalida.appendText("109");
+                break;
+            case "N":
+                txtSalida.appendText("110");
+                break;
+            case "Ñ":
+                txtSalida.appendText("164");
+                break;
+            case "O":
+                txtSalida.appendText("111");
+                break;
+            case "P":
+                txtSalida.appendText("112");
+                break;
+            case "Q":
+                txtSalida.appendText("113");
+                break;
+            case "R":
+                txtSalida.appendText("114");
+                break;
+            case "S":
+                txtSalida.appendText("115");
+                break;
+            case "T":
+                txtSalida.appendText("116");
+                break;
+            case "U":
+                txtSalida.appendText("117");
+                break;
+            case "V":
+                txtSalida.appendText("118");
+                break;
+            case "W":
+                txtSalida.appendText("119");
+                break;
+            case "X":
+                txtSalida.appendText("120");
+                break;
+            case "Y":
+                txtSalida.appendText("121");
+                break;
+            case "Z":
+                txtSalida.appendText("122");
+                break;
+            case "\n":
+                txtSalida.appendText("\n ");
 
         }
     }
