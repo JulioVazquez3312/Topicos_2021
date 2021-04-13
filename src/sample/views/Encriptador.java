@@ -115,18 +115,26 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
         for (int i = 0; i < caracteres.length; i++) {
 
             switch (caracteres[i]) {
+                case 'A':
                 case 'a':
                     // int codigo = event.getCode().ordinal();
                     txtSalida.appendText("bb");
                     break;
+                case 'B':
                 case 'b':
                     txtSalida.appendText("cc");
                     break;
+                case 'C':
                 case 'c':
                     txtSalida.appendText("aa");
                     break;
+                case 'D':
                 case 'd':
                     txtSalida.appendText("xx");
+                    break;
+                case 'M':
+                case 'm':
+                    txtSalida.appendText("ff");
                     break;
 
             }
