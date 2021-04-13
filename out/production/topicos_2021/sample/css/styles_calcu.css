@@ -1,0 +1,11 @@
+.button {
+    -fx-text-fill: rgb(42, 131, 7);
+    -fx-boder-color: rgb(17, 17, 53);
+    -fx-boder-radius: 10;
+    -fx-padding: 3 6 6 6;
+}
+
+#font-button {
+    -fx-font: bold italic 20pt "Arial";
+    -fx-effect: dropshadow( one-pass-box , black, 8 , 0.0 , 2 , 0 ) ;
+}

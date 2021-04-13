@@ -1,7 +1,30 @@
 .root {
-    -fx-background-image: url(../assets/imgen.jpg);
-    -fx-background-repeat: stretch;
-    -fx-background-size: auto;
-    -fx-background-position: center;
+  -fx-background-image: url(../assets/imgen.jpg), url(../assets/imagen.png);
+  -fx-background-repeat: stretch , no-repeat ;
+  -fx-background-size: auto, 520 290;
+  -fx-background-position: center, right bottom;
+}
 
+.menu-bar {
+  -fx-background-color: #d0f7ad;
+  -fx-boder-color: #95ebe6;
+  -fx-boder-width: 4;
+}
+
+.menu-item {
+    -fx-background-color: #97e4f7;
+    -fx-boder-color: #ebfa96;    
+}
+
+.menu:hover{
+    -fx-background-color: #141414;
+    -fx-font-weight: bold;
+}
+
+.label:hover{
+    -fx-background-color: #2c1616;
+    -fx-boder-color: red;
+}
+
+#rebensin {
 }
