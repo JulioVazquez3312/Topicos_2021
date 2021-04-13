@@ -87,10 +87,10 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
             try {
                 fileReader = new FileReader(archivo);
                 bufferedReader = new BufferedReader(fileReader);
-                String st = bufferedReader.readLine();
-                while (st != null) {
-                    texto = texto + st + "\n";
-                    st = bufferedReader.readLine();
+                String linea = bufferedReader.readLine();
+                while (linea != null) {
+                    texto = texto + linea + "\n";
+                    linea = bufferedReader.readLine();
                 }
             } catch (Exception e) {
                 //txtEncriptado.appendText(e.toString());
@@ -117,7 +117,6 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
             switch (caracteres[i]) {
                 case 'A':
                 case 'a':
-                    // int codigo = event.getCode().ordinal();
                     txtSalida.appendText("bb");
                     break;
                 case 'B':
@@ -136,7 +135,12 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
                 case 'm':
                     txtSalida.appendText("ff");
                     break;
-
+                case ' ':
+                    txtSalida.appendText("\t");
+                    break;
+                case '\n':
+                    txtSalida.appendText("\n");
+                    break;
             }
         }
     }
@@ -154,6 +158,7 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
             case "B":
                 txtSalida.appendText("cc");
                 break;
+
         }
     }
 }
