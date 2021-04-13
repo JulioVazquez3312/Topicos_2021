@@ -1,0 +1,7 @@
+.root {
+    -fx-background-image: url(../assets/imgen.jpg);
+    -fx-background-repeat: stretch;
+    -fx-background-size: auto;
+    -fx-background-position: center;
+
+}

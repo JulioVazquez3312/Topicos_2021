@@ -2,6 +2,7 @@ package sample;
 
 import com.sun.prism.paint.Color;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
@@ -9,11 +10,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import sample.views.Calculadora;
 import sample.views.Encriptador;
 import sample.views.Rompecabezas;
 
-public class Main extends Application {
+public class Main extends Application implements EventHandler<WindowEvent> {
 
     private VBox vBox;
     private MenuBar mnbarPrincipal;
@@ -33,6 +35,7 @@ public class Main extends Application {
 
         CrearUi();
 
+        primaryStage.addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST, this);
         primaryStage.setTitle("clase 3");
         primaryStage.setScene(escena);
         primaryStage.setMaximized(true);
@@ -67,6 +70,7 @@ public class Main extends Application {
         vBox.getChildren().add(mnbarPrincipal);
 
         escena = new Scene(vBox, 300,100);
+        escena.getStylesheets().add(getClass().getResource("css/styles.css").toExternalForm());
 
     /*
         GridPane grid = new GridPane();
@@ -127,4 +131,12 @@ public class Main extends Application {
         launch(args);
     }
 
+    @Override
+    public void handle(WindowEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Mensaje del sistema");
+        alert.setHeaderText("Gracias por usar el programa");
+        alert.setContentText("Vuelva pronto!!!");
+        alert.showAndWait();
+    }
 }
