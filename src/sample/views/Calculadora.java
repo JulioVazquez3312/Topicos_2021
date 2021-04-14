@@ -3,7 +3,6 @@ package sample.views;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -19,7 +18,11 @@ public class Calculadora extends Stage implements EventHandler {
     private HBox[] hBoxes;
     private Button[] arBtn;
     private VBox vBox;
-    private  char[] arNumeros = {'7','8','9','/','4','5','6','*','1','2','3','+','0','.','=','-'};
+    private  char[] arNumeros = {'7','8','9','/','4','5','6','*','1','2','3','-','0','.','+','='};
+    private String cadena ="";
+    private String operando = "";
+    private String numeros = "";
+    private double operaciones;
 
     public Calculadora() {
 
@@ -49,11 +52,41 @@ public class Calculadora extends Stage implements EventHandler {
                 arBtn[pos] = new Button(arNumeros[pos]+"");
                 //arBtn[pos].addEventHandler(MouseEvent.MOUSE_CLICKED, new EventoCalcu(arBtn[pos]));
                 arBtn[pos].addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
                     @Override
                     public void handle(MouseEvent event) {
-                        System.out.println("Mi tercer evento");
+
+                        String caract = "" + event.getSource();
+
+                        if(!String.valueOf(btnPresionado(caract)).equals("=")){
+                            cadena += btnPresionado(caract);
+                            if(!String.valueOf(btnPresionado(caract)).equals("+") && !String.valueOf(btnPresionado(caract)).equals("-")
+                                    && !String.valueOf(btnPresionado(caract)).equals("*") && !String.valueOf(btnPresionado(caract)).equals("/")){
+                                numeros += btnPresionado(caract);
+                                //txtOperacion.setText("" + btnPresionado(caract));
+                                txtOperacion.setText(cadena);
+                            } else if(String.valueOf(btnPresionado(caract)).equals("+") || String.valueOf(btnPresionado(caract)).equals("-")
+                                    || String.valueOf(btnPresionado(caract)).equals("*") || String.valueOf(btnPresionado(caract)).equals("/")){
+                                txtOperacion.setText("");
+                                cadena = "";
+                                operaciones ++;
+                                numeros += "-";
+                                if(operaciones == 1){
+                                    operando += btnPresionado(caract);
+                                } else{
+                                    operando += " " + btnPresionado(caract);
+                                }
+                            }
+                        } else{
+                            txtOperacion.setText(String.valueOf(soloPrueba(numeros,operando)));
+                            cadena = "";
+                            operando = "";
+                            numeros = "";
+                        }
+
                     }
                 });
+
                 arBtn[pos].setPrefSize(50,50);
                 hBoxes[i].getChildren().add(arBtn[pos]);
                 pos++;//contador de botones creados
@@ -72,8 +105,35 @@ public class Calculadora extends Stage implements EventHandler {
     @Override
     public void handle(Event event) {
         System.out.println("mi primer evento UwU ");
+    }
 
-    }//handle
+    private char btnPresionado(String entrada){
+        char caracter = Character.MIN_VALUE;
+        caracter = entrada.charAt(entrada.length()-2);
+        return caracter;
+    }
+
+    public double soloPrueba (String entrada, String operandos){
+        double resultado = 0;
+        String partCadena[] = entrada.split("-");
+        switch (operandos){
+            case "+":
+                resultado = Double.parseDouble(partCadena[0]) + Double.parseDouble(partCadena[1]);
+                break;
+            case "-":
+                resultado = Double.parseDouble(partCadena[0]) - Double.parseDouble(partCadena[1]);
+                break;
+            case "*":
+                resultado = Double.parseDouble(partCadena[0]) * Double.parseDouble(partCadena[1]);
+                break;
+            case "/":
+                resultado = Double.parseDouble(partCadena[0]) / Double.parseDouble(partCadena[1]);
+                break;
+        }
+        return resultado;
+    }
+
+
 }//class Calculadora
 
 class EventoCalcu implements EventHandler{
