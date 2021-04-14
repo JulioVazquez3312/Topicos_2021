@@ -1,6 +1,7 @@
 package sample.views;
 
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -26,6 +27,7 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
     private TextArea txtSalida;
     private Button btnEncriptar;
     private Button btnTolAbrir;
+    private Button btnLimpiar;
     private FileChooser fileChooser;
     private File archivo;
     private String texto = "";
@@ -66,9 +68,20 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
         btnEncriptar = new Button("Encriptar entrada");
         btnEncriptar.setOnAction(event -> abrirArchivo());
 
-        vBox.getChildren().addAll(tolMenu, hBox,btnEncriptar);
+        btnLimpiar = new Button("Limpiar");
+        btnLimpiar.setStyle("-fx-background-color: #759FD8;" +
+                " -fx-font-size: 1em; " +
+                "-fx-border-width: 5px;");
+        btnLimpiar.setOnAction(event -> limpiar());
+
+        vBox.getChildren().addAll(tolMenu, hBox,btnEncriptar, btnLimpiar);
 
         escena = new Scene(vBox, 600, 350);
+    }
+
+    private void limpiar() {
+        txtEncriptado.clear();
+        txtSalida.clear();
     }
 
     private void abrirArchivo() {
@@ -112,14 +125,14 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
     public void encriptarArchivo(String texto){
         texto = texto.toUpperCase();
 
-        System.out.println(texto);
+        //System.out.println(texto);
 
 
         char[] caracteres = texto.toCharArray();
 
-        for (int i = 0; i < caracteres.length; i++) {
+        for (char caracter : caracteres) {
 
-            switch (caracteres[i]) {
+            switch (caracter) {
                 case 'A':
                     // int codigo = event.getCode().ordinal();
                     txtSalida.appendText("97");
@@ -205,6 +218,8 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
                 case '\n':
                     txtSalida.appendText("\n");
                     break;
+                default:
+                    txtSalida.appendText("12312310");
             }
         }
     }
@@ -298,7 +313,10 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
                 txtSalida.appendText("122");
                 break;
             case "\n":
-                txtSalida.appendText("\n ");
+                txtSalida.appendText("\n");
+                break;
+            default:
+                txtSalida.appendText("12312310");
 
         }
     }
