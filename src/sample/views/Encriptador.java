@@ -1,7 +1,6 @@
 package sample.views;
 
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -85,16 +84,13 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
     }
 
     private void abrirArchivo() {
-
         fileChooser = new FileChooser();
         fileChooser.setTitle("Buscar archivo a encriptar : ");
         archivo = fileChooser.showOpenDialog(this);
         leerArchivo();
-
     }
 
     private void leerArchivo() {
-
         if (archivo != null) {
             FileReader fileReader = null;
             BufferedReader bufferedReader = null;
@@ -122,12 +118,9 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
             encriptarArchivo(texto);
         }
     }
+
     public void encriptarArchivo(String texto){
         texto = texto.toUpperCase();
-
-        //System.out.println(texto);
-
-
         char[] caracteres = texto.toCharArray();
 
         for (char caracter : caracteres) {
@@ -226,9 +219,7 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
 
     @Override
     public void handle(KeyEvent event) {
-
         //txtSalida.appendText(event.getCode().ordinalg()+"");
-
         switch (event.getCode().toString()){
             case "A":
                // int codigo = event.getCode().ordinal();
