@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import sample.models.Conexion;
 import sample.views.Calculadora;
 import sample.views.Encriptador;
 import sample.views.Rompecabezas;
@@ -36,6 +37,10 @@ public class Main extends Application implements EventHandler<WindowEvent> {
         primaryStage.setScene(escena);
         primaryStage.setMaximized(true);
         primaryStage.show();
+
+        //Abrimos la conexion de manera GLOBAL
+        Conexion.getConexion();
+
 
     }
 

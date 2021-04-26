@@ -10,7 +10,7 @@ public class Conexion {
     private static String pwd = "123456789";
     private static String db = "musicadb";
 
-    private static Connection conexion;
+    public static Connection conexion;
 
     public static void getConexion(){
         try{
