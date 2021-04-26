@@ -82,8 +82,8 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
     private void limpiar() {
         txtEncriptado.clear();
         txtSalida.clear();
-        archivo = null;
-        fileChooser = null;
+        //archivo = null;
+        //fileChooser = null;
         texto = "";
     }
 
@@ -107,24 +107,25 @@ public class Encriptador extends Stage implements EventHandler<KeyEvent>{
                     texto = texto + linea + "\n";
                     linea = bufferedReader.readLine();
                 }
-                fileReader.close();
-                bufferedReader.close();
-                archivo=null;
+
             } catch (Exception e) {
                 //txtEncriptado.appendText(e.toString());
                 System.out.println(e.toString());
+
             } finally {
                 try {
                     fileReader.close();
                     bufferedReader.close();
-                    archivo=null;
+                    archivo = null;
+                    txtEncriptado.appendText(texto);
+                    encriptarArchivo(texto);
+                    texto="";
+
                 } catch (Exception e2) {
                     //txtEncriptado.appendText(e2.toString());
                     System.out.println(e2.toString());
                 }
             }
-            txtEncriptado.appendText(texto);
-            encriptarArchivo(texto);
         }
     }
 
