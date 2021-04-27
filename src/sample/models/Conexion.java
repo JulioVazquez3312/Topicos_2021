@@ -12,7 +12,7 @@ public class Conexion {
 
     public static Connection conexion;
 
-    public static void getConexion(){
+    public synchronized static void getConexion(){
         try{
             Class.forName("org.mariadb.jdbc.Driver");
             conexion = DriverManager.getConnection("jdbc:mariadb://"+server+":3306/"+db,user,pwd);

@@ -10,6 +10,7 @@ import javafx.stage.WindowEvent;
 import sample.models.Conexion;
 import sample.views.Calculadora;
 import sample.views.Encriptador;
+import sample.views.FrmCanciones;
 import sample.views.Rompecabezas;
 
 public class Main extends Application implements EventHandler<WindowEvent> {
@@ -17,7 +18,7 @@ public class Main extends Application implements EventHandler<WindowEvent> {
     private VBox vBox;
     private MenuBar mnbarPrincipal;
     private Menu menComp1, menComp2, menCerrar;
-    private MenuItem miCalc, miRompecabeza, miEncriptar, miSalir;
+    private MenuItem miCalc, miRompecabeza, miEncriptar, miBDCanciones, miSalir;
     private Scene escena;
 
     /*
@@ -41,7 +42,6 @@ public class Main extends Application implements EventHandler<WindowEvent> {
         //Abrimos la conexion de manera GLOBAL
         Conexion.getConexion();
 
-
     }
 
     private void CrearUi() {
@@ -49,7 +49,7 @@ public class Main extends Application implements EventHandler<WindowEvent> {
 
         mnbarPrincipal = new MenuBar();
         menComp1 = new Menu("Competencia 1");
-        menComp2 = new Menu("Competencia 1");
+        menComp2 = new Menu("Competencia 2");
         menCerrar = new Menu("Cerrar ");
         mnbarPrincipal.getMenus().addAll( menComp1, menComp2, menCerrar);
 
@@ -62,7 +62,10 @@ public class Main extends Application implements EventHandler<WindowEvent> {
         miEncriptar = new MenuItem("Encriptar");
         miEncriptar.setOnAction( event -> opcionesMenu(3));
 
-        menComp1.getItems().addAll(miCalc,miRompecabeza, miEncriptar);//se agrega item calc y rompecabeza
+        miBDCanciones = new MenuItem("BD Canciones");
+        miBDCanciones.setOnAction(event -> opcionesMenu(4));
+
+        menComp1.getItems().addAll(miCalc,miRompecabeza, miEncriptar, miBDCanciones);//se agrega item calc y rompecabeza
 
         miSalir = new MenuItem("Salir");
         miSalir.setOnAction( event -> { System.exit(0);});
@@ -124,7 +127,8 @@ public class Main extends Application implements EventHandler<WindowEvent> {
         switch (opc){
             case 1: new Calculadora(); break;
             case 2: new Rompecabezas();break;
-            case 3: new Encriptador();
+            case 3: new Encriptador(); break;
+            case  4: new FrmCanciones();
         }
     }
 
