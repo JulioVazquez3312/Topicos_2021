@@ -125,6 +125,7 @@ public class CancionesDAO {
                 objc.nombre_canciones = res.getString("nombre_cancion");
                 objc.duracion = res.getInt("duracion");
                 objc.portada = res.getString("portada");
+                objc.anio = res.getInt("anio");
                 objc.letra = res.getString("letra");
                 listC.add(objc);
             }
