@@ -8,17 +8,14 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import sample.models.Conexion;
-import sample.views.Calculadora;
-import sample.views.Encriptador;
-import sample.views.FrmCanciones;
-import sample.views.Rompecabezas;
+import sample.views.*;
 
 public class Main extends Application implements EventHandler<WindowEvent> {
 
     private VBox vBox;
     private MenuBar mnbarPrincipal;
     private Menu menComp1, menComp2, menCerrar;
-    private MenuItem miCalc, miRompecabeza, miEncriptar, miBDCanciones, miSalir;
+    private MenuItem miCalc, miRompecabeza, miEncriptar, miBDCanciones, mitRunners, miSalir;
     private Scene escena;
 
     /*
@@ -64,6 +61,10 @@ public class Main extends Application implements EventHandler<WindowEvent> {
 
         miBDCanciones = new MenuItem("BD Canciones");
         miBDCanciones.setOnAction(event -> opcionesMenu(4));
+
+        mitRunners = new MenuItem("Ejecucion de hilos");
+        mitRunners.setOnAction(event-> opcionesMenu(5));
+        menComp2.getItems().addAll(mitRunners);
 
         menComp1.getItems().addAll(miCalc,miRompecabeza, miEncriptar, miBDCanciones);//se agrega item calc y rompecabeza
 
@@ -128,7 +129,8 @@ public class Main extends Application implements EventHandler<WindowEvent> {
             case 1: new Calculadora(); break;
             case 2: new Rompecabezas();break;
             case 3: new Encriptador(); break;
-            case  4: new FrmCanciones();
+            case 4: new FrmCanciones(); break;
+            case 5: new Pista(); break;
         }
     }
 
