@@ -29,7 +29,7 @@ public class FormCanciones extends Stage {
     private void CrearUI() {
         vBox = new VBox();
         tableVCansiones = new TableView<>();
-        btnAdd = new Button("+ Add");
+        btnAdd = new Button("Agragar una Cancion");
         btnAdd.setOnAction(event -> {
             new FrmCancion(tableVCansiones,null);
         });
@@ -44,7 +44,7 @@ public class FormCanciones extends Stage {
         tbcIdCancion.setCellValueFactory(new PropertyValueFactory<>("id_cancion"));
 
         TableColumn<CancionesDAO,String> tbcNombreCancion = new TableColumn<>("Cancion");
-        tbcNombreCancion.setCellValueFactory(new PropertyValueFactory<>("nombre_cancion"));
+        tbcNombreCancion.setCellValueFactory(new PropertyValueFactory<>("nombre_canciones"));
 
         TableColumn<CancionesDAO, Integer> tbcDuracion = new TableColumn<>("Duracion");
         tbcDuracion.setCellValueFactory(new PropertyValueFactory<>("duracion"));
@@ -58,14 +58,14 @@ public class FormCanciones extends Stage {
         TableColumn<CancionesDAO, String> tbcLetra = new TableColumn<>("Letra");
         tbcLetra.setCellValueFactory(new PropertyValueFactory<>("letra"));
 
-        TableColumn<CancionesDAO, String> tblEdit = new TableColumn<>("Edit");
+        TableColumn<CancionesDAO, String> tblEdit = new TableColumn<>("Editar");
         tblEdit.setCellFactory(new Callback<TableColumn<CancionesDAO, String>, TableCell<CancionesDAO, String>>() {
             @Override
             public TableCell<CancionesDAO, String> call(TableColumn<CancionesDAO, String> param) {
                 return new CellCustom(1);
             }
         });
-        TableColumn<CancionesDAO, String> tblDelet = new TableColumn<>("Deleted");
+        TableColumn<CancionesDAO, String> tblDelet = new TableColumn<>("Borrar");
         tblDelet.setCellFactory(new Callback<TableColumn<CancionesDAO, String>, TableCell<CancionesDAO,String>>() {
             @Override
             public TableCell<CancionesDAO,String> call(TableColumn<CancionesDAO, String> param) {

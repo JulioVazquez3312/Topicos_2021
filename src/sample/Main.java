@@ -133,7 +133,7 @@ public class Main extends Application implements EventHandler<WindowEvent> {
             case 1: new Calculadora(); break;
             case 2: new Rompecabezas();break;
             case 3: new Encriptador(); break;
-            case 4: new FrmCanciones(); break;
+            case 4: new FormCanciones(); break;
             case 5: new Pista(); break;
             case 6: new ClienteSoke().connectToServer(); break;
         }

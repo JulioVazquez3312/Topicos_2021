@@ -6,7 +6,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableCell;
 import sample.models.CancionesDAO;
 import sample.views.FrmCancion;
-import sample.views.FrmCanciones;
 
 import java.util.Optional;
 
@@ -18,19 +17,19 @@ public class CellCustom extends TableCell<CancionesDAO,String>{
     public CellCustom(int opc){
         //objcanDAO = CellCustom.this.getTableView().getItems().get(CellCustom.this.getIndex());
         if (opc == 1){
-            btnCelda = new Button("Edit");
+            btnCelda = new Button("Editar");
             btnCelda.setOnAction(event -> {
                 objcanDAO= CellCustom.this.getTableView().getItems().get(CellCustom.this.getIndex());
                 new FrmCancion(CellCustom.this.getTableView(),objcanDAO);
             });
         }
         else{
-            btnCelda = new Button("Deleted");
+            btnCelda = new Button("Borrar");
             btnCelda.setOnAction(event ->{
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Mensaje del Sistema");
-                alert.setTitle("Confirmacion");
-                alert.setContentText("Quiere usted borrar esta opcion?");
+                alert.setHeaderText("Confirmacion");
+                alert.setContentText("¿Quiere usted borrar esta cancion?");
                 Optional<ButtonType> result = alert.showAndWait();
 
                 if (result.get()==ButtonType.OK){

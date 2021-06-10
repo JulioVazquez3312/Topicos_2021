@@ -70,7 +70,7 @@ public class CancionesDAO {
         try {
 
             String query = "INSERT INTO tbl_canciones (nombre_cancion, duracion, portada, anio, letra) " +
-                    "VALUES('"+nombre_canciones+"', "+duracion+", '"+portada+"', " +portada+", '"+letra+"')";
+                    "VALUES('"+nombre_canciones+"', "+duracion+", '"+portada+"', "+anio+", '"+letra+"');";
 
             Statement stmt = Conexion.conexion.createStatement();
             stmt.executeUpdate(query);
@@ -98,7 +98,7 @@ public class CancionesDAO {
     public void DELETE(){
         try {
 
-            String query = "DELETE FROM tbl_cancines id_cancion = "+ id_cancion;
+            String query = "DELETE FROM tbl_canciones WHERE id_cancion = "+ id_cancion+";";
             Statement stmt = Conexion.conexion.createStatement();
             stmt.executeUpdate(query);
 

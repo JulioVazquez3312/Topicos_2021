@@ -14,7 +14,7 @@ import sample.models.CancionesDAO;
 public class FrmCancion extends Stage {
     private Scene scene;
     private VBox vBox;
-    private TextField txtNombre, textDuracion, txtPortada, txtYear;
+    private TextField txtNombre, textDuracion, txtPortada, txtAnio;
     private TextArea txtLetra;
     private Button btnSave;
     private CancionesDAO objcanDAO;
@@ -46,19 +46,19 @@ public class FrmCancion extends Stage {
         txtPortada = new TextField();
         txtPortada.setText(objcanDAO.getPortada());
         txtPortada.setPromptText("portada");
-        txtYear = new TextField();
-        txtYear.setText(String.valueOf(objcanDAO.getAnio()));
-        txtYear.setPromptText("Año");
+        txtAnio = new TextField();
+        txtAnio.setText(String.valueOf(objcanDAO.getAnio()));
+        txtAnio.setPromptText("Año");
         txtLetra = new TextArea();
         txtLetra.setText(objcanDAO.getLetra());
         txtLetra.setPromptText("Letra");
-        btnSave= new Button("Save");
+        btnSave= new Button("Guardar");
 
         btnSave.setOnAction(event -> {
             objcanDAO.setNombre_canciones(txtNombre.getText());
             objcanDAO.setDuracion(Integer.parseInt(textDuracion.getText()));
             objcanDAO.setPortada(txtPortada.getText());
-            objcanDAO.setAnio(Integer.parseInt(txtYear.getText()));
+            objcanDAO.setAnio(Integer.parseInt(txtAnio.getText()));
             objcanDAO.setLetra(txtLetra.getText());
 
             if (objcanDAO.getId_cancion() > 0)
@@ -70,7 +70,7 @@ public class FrmCancion extends Stage {
             tableVCansiones.refresh();
             this.close();
         });
-        vBox.getChildren().addAll(txtNombre,textDuracion,txtPortada,txtYear,txtLetra,btnSave);
+        vBox.getChildren().addAll(txtNombre,textDuracion,txtPortada, txtAnio,txtLetra,btnSave);
         scene = new Scene(vBox,250,300);
 
     }
