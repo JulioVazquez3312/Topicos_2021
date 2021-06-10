@@ -13,7 +13,6 @@ public class ClienteSoke {
 
     public void connectToServer(){
         try{
-
             host = InetAddress.getLocalHost();
             clinete = new Socket(host, 5000);
 
@@ -21,7 +20,7 @@ public class ClienteSoke {
             System.out.println(entrada.readLine());
 
             PrintStream salida = new PrintStream(clinete.getOutputStream());
-            System.out.println("Hola gracias por el saludo :)");
+            salida.println("Hola gracias por el saludo :)");
 
         }catch (Exception e){
             e.printStackTrace();
