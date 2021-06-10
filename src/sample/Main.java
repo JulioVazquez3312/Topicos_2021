@@ -15,7 +15,7 @@ public class Main extends Application implements EventHandler<WindowEvent> {
     private VBox vBox;
     private MenuBar mnbarPrincipal;
     private Menu menComp1, menComp2, menCerrar;
-    private MenuItem miCalc, miRompecabeza, miEncriptar, miBDCanciones, mitRunners, miSalir;
+    private MenuItem miCalc, miRompecabeza, miEncriptar, miBDCanciones, mitRunners, mitSokets, miSalir;
     private Scene escena;
 
     /*
@@ -64,7 +64,11 @@ public class Main extends Application implements EventHandler<WindowEvent> {
 
         mitRunners = new MenuItem("Ejecucion de hilos");
         mitRunners.setOnAction(event-> opcionesMenu(5));
-        menComp2.getItems().addAll(mitRunners);
+
+        mitSokets = new MenuItem("Manejo de Sokets");
+        mitSokets.setOnAction(event -> opcionesMenu(6));
+
+        menComp2.getItems().addAll(mitRunners, mitSokets    );
 
         menComp1.getItems().addAll(miCalc,miRompecabeza, miEncriptar, miBDCanciones);//se agrega item calc y rompecabeza
 
@@ -131,6 +135,7 @@ public class Main extends Application implements EventHandler<WindowEvent> {
             case 3: new Encriptador(); break;
             case 4: new FrmCanciones(); break;
             case 5: new Pista(); break;
+            case 6: new ClienteSoke().connectToServer(); break;
         }
     }
 
