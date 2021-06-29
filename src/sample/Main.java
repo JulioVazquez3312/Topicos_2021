@@ -15,15 +15,8 @@ public class Main extends Application implements EventHandler<WindowEvent> {
     private VBox vBox;
     private MenuBar mnbarPrincipal;
     private Menu menComp1, menComp2, menCerrar;
-    private MenuItem miCalc, miRompecabeza, miEncriptar, miBDCanciones, mitRunners, mitSokets, miSalir;
+    private MenuItem miCalc, miRompecabeza, miEncriptar, miBDCanciones, mitRunners, mitSokets, mitPaneles, miSalir;
     private Scene escena;
-
-    /*
-    private HBox hBox;
-
-    private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7;
-    private FlowPane flowpane = new FlowPane();
-    */  //codigo de la tarea
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -68,7 +61,10 @@ public class Main extends Application implements EventHandler<WindowEvent> {
         mitSokets = new MenuItem("Manejo de Sokets");
         mitSokets.setOnAction(event -> opcionesMenu(6));
 
-        menComp2.getItems().addAll(mitRunners, mitSokets    );
+        mitPaneles = new MenuItem("Paneles JavaFX");
+        mitPaneles.setOnAction(event -> opcionesMenu(7));
+
+        menComp2.getItems().addAll(mitRunners, mitSokets, mitPaneles );
 
         menComp1.getItems().addAll(miCalc,miRompecabeza, miEncriptar, miBDCanciones);//se agrega item calc y rompecabeza
 
@@ -136,6 +132,7 @@ public class Main extends Application implements EventHandler<WindowEvent> {
             case 4: new FormCanciones(); break;
             case 5: new Pista(); break;
             case 6: new ClienteSoke().connectToServer(); break;
+            case 7: new PanelesFx(); break;
         }
     }
 
